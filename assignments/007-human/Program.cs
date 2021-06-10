@@ -16,7 +16,7 @@ namespace _007_human
     public string Name;
     public int Strength;
     public int Intelligence;
-    public int Dexterity;
+    public int Dexteri[ty;
     private int health;
     public int Health
     {
