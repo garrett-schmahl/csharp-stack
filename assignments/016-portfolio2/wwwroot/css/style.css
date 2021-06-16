@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px;
+}
+.header {
+  width: 350px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.column {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.project_scroller {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+.project {
+  display: flex;
+}
+.entry_form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  width: 300px;
+}
+.form_body {
+  display: flex;
+}
+form button {
+  display: flex;
+  width: 60px;
+  margin: auto;
+}
