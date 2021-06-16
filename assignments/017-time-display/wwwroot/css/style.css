@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 200px;
+}
+.time_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding: 20px;
+}
+.time_box p {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-weight: bolder;
+  font-size: larger;
+}
