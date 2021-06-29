@@ -1,0 +1,9 @@
+@using _019_viewmodel_fun.Models
+@model List<Person>
+
+
+<h1>List of Users</h1>
+@foreach (Person user in Model)
+{
+  <p>@user.FirstName @user.LastName</p>
+}

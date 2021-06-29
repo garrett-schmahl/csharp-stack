@@ -1,0 +1,8 @@
+@using _019_viewmodel_fun.Models
+@model Numbers
+
+<h1>Numbers here</h1>
+@foreach (int num in @Model.NumArray)
+{
+  <p>@num</p>
+}

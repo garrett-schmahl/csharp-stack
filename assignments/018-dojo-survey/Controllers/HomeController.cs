@@ -11,7 +11,7 @@ namespace _018_dojo_survey.Controllers
       return View();
     }
 
-    [HttpPost("result")]
+    [HttpPost("/result")]
     public ViewResult Result(string name_entry, string location_select, string language_select, string comment_entry)
     {
       ViewBag.name_entry = name_entry;
