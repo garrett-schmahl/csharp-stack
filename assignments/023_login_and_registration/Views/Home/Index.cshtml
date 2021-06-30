@@ -1,0 +1,33 @@
+﻿<div class="text-center">
+  <h1 class="display-4">Register to this Cool Site!</h1>
+  <a href="/login">Login</a>
+</div>
+@model User
+<form asp-controller="Home" asp-action="RegisterUser" method="POST">
+  <div class="form-group">
+    <span asp-validation-for="FirstName"></span>
+    <label asp-for="FirstName"></label>
+    <Input type="text" asp-for="FirstName">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="LastName"></span>
+    <label asp-for="LastName"></label>
+    <Input type="text" asp-for="LastName">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Email"></span>
+    <label asp-for="Email"></label>
+    <Input type="email" asp-for="Email">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Password"></span>
+    <label asp-for="Password"></label>
+    <Input type="Password" asp-for="Password">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="PassConfirm"></span>
+    <label asp-for="PassConfirm"></label>
+    <Input type="Password" asp-for="PassConfirm">
+  </div>
+  <button tye="submit">Submit</button>
+</form>
