@@ -1,0 +1,38 @@
+<div class="text-center">
+  <h1 class="display-4">Add a New Dish!</h1>
+</div>
+@model Dish
+<form asp-controller="home" asp-action="submitDish" method="POST">
+  <div class="form-group">
+    <span asp-validation-for="Chef"></span>
+    <label asp-for="Chef"></label>
+    <Input type="text" asp-for="Chef">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Name"></span>
+    <label asp-for="Name"></label>
+    <Input type="text" asp-for="Name">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Calories"></span>
+    <label asp-for="Calories"></label>
+    <Input type="number" asp-for="Calories">
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Tastiness"></span>
+    <label asp-for="Tastiness"></label>
+    <Select asp-for="Tastiness">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </Select>
+  </div>
+  <div class="form-group">
+    <span asp-validation-for="Description"></span>
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description"></textarea>
+  </div>
+  <button tye="submit">Submit</button>
+</form>

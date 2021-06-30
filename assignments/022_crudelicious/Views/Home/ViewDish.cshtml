@@ -1,0 +1,15 @@
+<div class="text-center">
+  <h1>@ViewBag.Dish.Name</h1>
+  <h2>@ViewBag.Dish.Chef</h2>
+  <hr>
+  <p>@ViewBag.Dish.Description</p>
+  <p>Calories: @ViewBag.Dish.Calories</p>
+  <p>Tastiness: @ViewBag.Dish.Tastiness</p>
+</div>
+
+
+<a href="/edit/@ViewBag.Dish.DishId">Edit</a>
+
+<form action="delete/@ViewBag.Dish.DishId" method="POST">
+  <button type="submit">Delete</button>
+</form>
