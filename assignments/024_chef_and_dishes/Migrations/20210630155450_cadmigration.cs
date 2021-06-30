@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace _024_chef_and_dishes.Migrations
 {
-    public partial class cadmigration1 : Migration
+    public partial class cadmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,11 @@ namespace _024_chef_and_dishes.Migrations
                 {
                     ChefId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false),
-                    DateOfBirth = table.Column<DateTime>(nullable: false)
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    DateOfBirth = table.Column<DateTime>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,7 +35,9 @@ namespace _024_chef_and_dishes.Migrations
                     Calories = table.Column<int>(nullable: false),
                     Tastiness = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: false),
-                    ChefId = table.Column<int>(nullable: true)
+                    ChefId = table.Column<int>(nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +47,7 @@ namespace _024_chef_and_dishes.Migrations
                         column: x => x.ChefId,
                         principalTable: "Chefs",
                         principalColumn: "ChefId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

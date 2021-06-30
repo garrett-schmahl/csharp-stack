@@ -27,6 +27,7 @@ namespace _024_chef_and_dishes.Models
     [MinLength(15, ErrorMessage = "must be at least 15 characters")]
     [Display(Name = "Description")]
     public string Description { get; set; }
+
     public int ChefId { get; set; }
     public Chef Chef { get; set; }
 

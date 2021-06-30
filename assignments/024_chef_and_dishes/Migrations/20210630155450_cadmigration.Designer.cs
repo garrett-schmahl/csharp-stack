@@ -9,8 +9,8 @@ using _024_chef_and_dishes.Models;
 namespace _024_chef_and_dishes.Migrations
 {
     [DbContext(typeof(CadContext))]
-    [Migration("20210630132343_cadmigration2")]
-    partial class cadmigration2
+    [Migration("20210630155450_cadmigration")]
+    partial class cadmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,7 +56,7 @@ namespace _024_chef_and_dishes.Migrations
                     b.Property<int>("Calories")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ChefId")
+                    b.Property<int>("ChefId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -85,9 +85,11 @@ namespace _024_chef_and_dishes.Migrations
 
             modelBuilder.Entity("_024_chef_and_dishes.Models.Dish", b =>
                 {
-                    b.HasOne("_024_chef_and_dishes.Models.Chef", null)
+                    b.HasOne("_024_chef_and_dishes.Models.Chef", "Chef")
                         .WithMany("Dishes")
-                        .HasForeignKey("ChefId");
+                        .HasForeignKey("ChefId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

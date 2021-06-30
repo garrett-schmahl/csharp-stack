@@ -9,7 +9,7 @@
     <Select asp-for="Chef">
       @foreach (Chef chef in ViewBag.allChefs)
       {
-        <option value=@chef.ChefId>@chef.FirstName @chef.LastName</option>
+        <option value="@chef">@chef.FirstName @chef.LastName</option>
       }
     </Select>
   </div>

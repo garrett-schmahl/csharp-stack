@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using _024_chef_and_dishes.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace _024_chef_and_dishes.Controllers
 {
@@ -22,14 +24,18 @@ namespace _024_chef_and_dishes.Controllers
     [HttpGet("")]
     public IActionResult Index()
     {
-      List<Chef> allChefs = db.Chefs.ToList();
+      List<Chef> allChefs = db.Chefs
+      .Include(chef => chef.Dishes)
+      .ToList();
       return View("Index", allChefs);
     }
 
     [HttpGet("/allDishes")]
     public IActionResult AllDishes()
     {
-      List<Dish> allDishes = db.Dishes.ToList();
+      List<Dish> allDishes = db.Dishes
+      .Include(dish => dish.Chef)
+      .ToList();
       return View("AllDishes", allDishes);
     }
 
@@ -72,7 +78,7 @@ namespace _024_chef_and_dishes.Controllers
       {
         return View("AddDish");
       }
-      newDish.Chef = db.Chef[newDish.ChefId];
+      // newDish.ChefId = db.Chefs.FirstOrDefault(chef => chef.ChefId == newDish.ChefId);
       db.Add(newDish);
       db.SaveChanges();
       return RedirectToAction("AllDishes");

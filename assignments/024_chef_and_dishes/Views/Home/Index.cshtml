@@ -20,22 +20,19 @@
       </th>
     </tr>
     <tb>
-      @if (Model != null)
+      @foreach (Chef chef in Model)
       {
-        @foreach (Chef chef in Model)
-        {
-          <tr>
-            <td>
-              @chef.FirstName @chef.LastName
-            </td>
-            <td>
-              @chef.DateOfBirth.ToString("MM/dd/yyyy")
-            </td>
-            <td>
-              @chef.Dishes
-            </td>
-          </tr>
-        }
+        <tr>
+          <td>
+            @chef.FirstName @chef.LastName
+          </td>
+          <td>
+            @chef.DateOfBirth.ToString("MM/dd/yyyy")
+          </td>
+          <td>
+            @chef.Dishes.Count()
+          </td>
+        </tr>
       }
     </tb>
   </table>
