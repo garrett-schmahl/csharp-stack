@@ -1,0 +1,42 @@
+﻿@model List<Chef>
+<div class="text-center">
+  <h1 class="display-4">Chefs | <a href="/allDishes">Dishes</a>
+  </h1>
+  <a href="AddChef">Add A Chef</a>
+</div>
+<div>
+  <h2>Check Out Our Roster of Chefs!</h2>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+        Date of Birth
+      </th>
+      <th>
+        # of Dishes
+      </th>
+    </tr>
+    <tb>
+      @if (Model != null)
+      {
+        @foreach (Chef chef in Model)
+        {
+          <tr>
+            <td>
+              @chef.FirstName @chef.LastName
+            </td>
+            <td>
+              @chef.DateOfBirth.ToString("MM/dd/yyyy")
+            </td>
+            <td>
+              @chef.Dishes
+            </td>
+          </tr>
+        }
+      }
+    </tb>
+  </table>
+</div>
