@@ -4,14 +4,14 @@
 @model Dish
 <form asp-controller="home" asp-action="createDish" method="POST">
   <div class="form-group">
-    <span asp-validation-for="Chef"></span>
-    <label asp-for="Chef"></label>
-    <Select asp-for="Chef">
+    <span asp-validation-for="ChefId"></span>
+    <label asp-for="ChefId"></label>
+    <select asp-for="ChefId">
       @foreach (Chef chef in ViewBag.allChefs)
       {
-        <option value="@chef">@chef.FirstName @chef.LastName</option>
+        <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
       }
-    </Select>
+    </select>
   </div>
   <div class="form-group">
     <span asp-validation-for="Name"></span>

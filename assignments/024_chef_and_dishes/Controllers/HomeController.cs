@@ -48,7 +48,7 @@ namespace _024_chef_and_dishes.Controllers
     [HttpGet("/AddDish")]
     public IActionResult AddDish()
     {
-      List<Chef> allChefs = db.Chefs.ToList();
+      List<Chef> allChefs = db.Chefs.Include(chef => chef.Dishes).ToList();
       ViewBag.allChefs = allChefs;
       return View("AddDish");
     }
@@ -78,7 +78,6 @@ namespace _024_chef_and_dishes.Controllers
       {
         return View("AddDish");
       }
-      // newDish.ChefId = db.Chefs.FirstOrDefault(chef => chef.ChefId == newDish.ChefId);
       db.Add(newDish);
       db.SaveChanges();
       return RedirectToAction("AllDishes");
