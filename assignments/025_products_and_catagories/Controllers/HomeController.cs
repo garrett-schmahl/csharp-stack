@@ -23,8 +23,13 @@ namespace _025_products_and_catagories.Controllers
     [HttpGet("")]
     public IActionResult Index(int categoryID = 1)
     {
-      //goal: get a list of products that are not associated with the category
+      return RedirectToAction("DisplayCategories", new { categoryID = categoryID });
+    }
 
+
+    [HttpGet("/category/{categoryID}")]
+    public IActionResult DisplayCategories(int categoryID)
+    {
       ViewBag.Products = db.Products
       .Include(p => p.Associations)
       .ThenInclude(pa => pa.Category)
@@ -49,9 +54,57 @@ namespace _025_products_and_catagories.Controllers
       db.Associations.Add(newAssoc);
       db.SaveChanges();
 
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", new { categoryID = submit.CategoryID });
     }
 
+
+
+    [HttpGet("/categories")]
+    public IActionResult DisplayCategories()
+    {
+      ViewBag.Categories = db.Categories;
+      return View();
+    }
+
+    [HttpPost("/AddCategory")]
+    public IActionResult AddCategory(Category newCat)
+    {
+      db.Categories.Add(newCat);
+      db.SaveChanges();
+      return RedirectToAction("DisplayCategories");
+    }
+
+    [HttpGet("/products")]
+    public IActionResult DisplayProducts()
+    {
+      ViewBag.Products = db.Products;
+      return View();
+    }
+
+    [HttpPost("/AddProduct")]
+    public IActionResult AddProduct(Product newProd)
+    {
+      db.Products.Add(newProd);
+      db.SaveChanges();
+      return RedirectToAction("DisplayProducts");
+    }
+
+
+    [HttpGet("/product/{productID}")]
+    public IActionResult DisplayProduct(int productID)
+    {
+      ViewBag.Categories = db.Categories
+      .Include(p => p.Associations)
+      .ThenInclude(pa => pa.Product)
+      .Where(p => p.Associations.All(a => a.ProductID != productID))
+      .ToList();
+
+      ViewBag.Product = db.Products
+     .Include(c => c.Associations)
+     .ThenInclude(ca => ca.Category)
+     .FirstOrDefault(c => c.ProductID == productID);
+      return View("DisplayProduct");
+    }
 
 
     public IActionResult Privacy()

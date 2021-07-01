@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _025_products_and_catagories.Models;
 
 namespace _025_products_and_catagories.Migrations
 {
     [DbContext(typeof(PacContext))]
-    partial class PacContextModelSnapshot : ModelSnapshot
+    [Migration("20210701054615_pacmigration2")]
+    partial class pacmigration2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

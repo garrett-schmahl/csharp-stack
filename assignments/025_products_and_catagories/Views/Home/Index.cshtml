@@ -1,12 +1,12 @@
-﻿<div class="container">
-  <h1>@ViewBag.Category.Name</h1>
+﻿<h1>@ViewBag.Category.Name</h1>
+<div class="row">
   <div class="col">
     <h2>Products</h2>
     <ul>
       @foreach (Association association in ViewBag.Category.Associations)
       {
         <li>
-          @association.Product.Name
+          <a href="/product/@association.Product.ProductID">@association.Product.Name</a>
         </li>
       }
     </ul>
@@ -14,16 +14,21 @@
 
   <div class="col">
     <h3>Add Product</h3>
-    @model submitProduct
+    @model Product
     <form asp-controller="home" asp-action="AddAssociation" method="POST">
-      <select asp-for="ProductID">
-        @foreach (Product product in ViewBag.Products)
-        {
-          <option value="@product.ProductID">@product.Name</option>
-        }
-      </select>
+      <div class="form-group">
+        <label asp-for="ProductID"></label>
+        <select asp-for="ProductID">
+          @foreach (Product product in ViewBag.Products)
+          {
+            <option value="@product.ProductID">@product.Name</option>
+          }
+        </select>
+      </div>
       <input type="hidden" asp-for="CategoryID" value="@ViewBag.Category.CategoryID">
+      <button type="Submit">Add</button>
     </form>
 
   </div>
 </div>
+<a href="/categories">Back</a>

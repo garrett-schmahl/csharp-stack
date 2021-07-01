@@ -8,6 +8,7 @@ namespace _025_products_and_catagories.Models
   public class Product
   {
 
+    [Display(Name = "Product")]
     [Key]
     public int ProductID { get; set; }
 
@@ -27,6 +28,11 @@ namespace _025_products_and_catagories.Models
     public double Price { get; set; }
 
     public List<Association> Associations { get; set; }
+
+    [Display(Name = "Category")]
+    [NotMapped]
+    public int CategoryID { get; set; }
+
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;

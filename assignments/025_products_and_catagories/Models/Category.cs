@@ -18,6 +18,11 @@ namespace _025_products_and_catagories.Models
 
     public List<Association> Associations { get; set; }
 
+    [Display(Name = "Product")]
+    [NotMapped]
+    public int ProductID { get; set; }
+
+
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
   }
